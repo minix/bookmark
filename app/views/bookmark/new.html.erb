@@ -1,7 +1,26 @@
-<%= form_for @bookmark, :url => { :controller => "bookmark", :action => "create" } do |f| %>
-  Website: <%= f.text_field :url %>
-  Tag: <%= f.text_field :tag %>
-  State: <%= f.text_field :state %>
-  <%= f.submit %>
-<% end %>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <title>add Bookmark</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <%= form_for @bookmark, :url => { :controller => "bookmark", :action => "create" } do |f| %>
+      <p>
+        <%= f.label "WebSite" %>
+        <%= f.text_field :url %>
+      </p>
+      <p>
+        <%= f.label "Tag" %>
+        <%= f.text_field :tag %>
+      </p>
+      <p>
+        <%= f.label "State" %>
+        <%= f.text_field :state %>
+      </p>
+      <%= f.submit %>
+    <% end %>
+  </body>
+</html>
