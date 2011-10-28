@@ -1,0 +1,7 @@
+<%= form_for @bookmark, :url => { :controller => "bookmark", :action => "create" } do |f| %>
+  Website: <%= f.text_field :url %>
+  Tag: <%= f.text_field :tag %>
+  State: <%= f.text_field :state %>
+  <%= f.submit %>
+<% end %>
+

@@ -1,0 +1,9 @@
+<%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %>
+<ul>
+<% @bookmark.each do |bookmark| %>
+  <li><a href="<%= bookmark.url %>"><%= bookmark.state %></a><time><%= bookmark.created_at.strftime('%Y-%m-%d') %></time><br />
+    <%= bookmark.tag %> <br />
+    <%= link_to "Delete", :action => "destroy", :id => bookmark, :confirm => "Are you Sure", :method => :delete %></li>
+<% end %>
+</ul>
+  
