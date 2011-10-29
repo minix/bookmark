@@ -1,6 +1,7 @@
 class BookmarkController < ApplicationController
   def index
     @bookmark = Bookmark.find(:all)
+    @tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
   end
 
   def new
@@ -32,6 +33,10 @@ class BookmarkController < ApplicationController
 
     redirect_to :action => "index"
 
-    end
+  end
+
+  def modify
+    @bookmark = Bookmark.find(params[:id])
+  end
 
 end

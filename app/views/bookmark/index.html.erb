@@ -1,9 +1,29 @@
-<%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %>
-<ul>
-<% @bookmark.each do |bookmark| %>
-  <li><a href="<%= bookmark.url %>"><%= bookmark.state %></a><time><%= bookmark.created_at.strftime('%Y-%m-%d') %></time><br />
-    <%= bookmark.tag %> <br />
-    <%= link_to "Delete", :action => "destroy", :id => bookmark, :confirm => "Are you Sure", :method => :delete %></li>
-<% end %>
-</ul>
-  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>List Bookmark</title>
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    
+    <%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %>
+    <h2>Current Bookmark</h2>
+    <ol>
+    <% @bookmark.each do |bookmark| %>
+      <li><a href="<%= bookmark.url %>"><%= bookmark.state %></a><time><%= bookmark.created_at.strftime('%Y-%m-%d') %></time><br />
+        <%= bookmark.tag %> <br />
+        <span><%= link_to "Delete", :action => "destroy", :id => bookmark, :confirm => "Are you Sure", :method => :delete %></span>
+        <span><%= link_to "update", :action => "modify", :id => bookmark %></li></span>
+    <% end %>
+    </ol>
+    <h2>Tag</h2>
+    <ul>
+      <% @tag.each do |tab| %>
+         <li><%= tab.tag %> </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

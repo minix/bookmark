@@ -7,7 +7,7 @@
     </style>
   </head>
   <body>
-    <%= form_for @bookmark, :url => { :controller => "bookmark", :action => "create" } do |f| %>
+    <%= form_for @bookmark, :url => { :controller => "bookmark", :action => "modify", :id => @bookmark } do |f| %>
       <p>
         <%= f.label "WebSite" %>
         <%= f.text_field :url %>
@@ -20,7 +20,7 @@
         <%= f.label "State" %>
         <%= f.text_field :state %>
       </p>
-      <%= f.submit "Save" %>
+      <%= f.submit %>
     <% end %>
   </body>
 </html>
