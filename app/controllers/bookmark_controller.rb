@@ -1,7 +1,13 @@
 class BookmarkController < ApplicationController
   def index
     @bookmark = Bookmark.find(:all)
-    @tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
+    #@tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
+    #@tag = Bookmark.find(:all, :select => "tag", :group => "tag", :order => "count(tag) DESC")
+    @tag = Bookmark.find(:all, :select => "tag", :group => "tag")
+    #@tag_count = Bookmark.where(:tag => "#{@tag.tag}").count
+#    @tag.each do |tag_count|
+#      @tag_count = Bookmark.where(:tag => "#{tag_count.tag}").count
+#    end
   end
 
   def new
