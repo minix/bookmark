@@ -1,4 +1,8 @@
 Project::Application.routes.draw do
+  get "user/login"
+
+  get "user/signup"
+
   get "bookmark/index"
   get "bookmark/new"
   get "bookmark/destroy"
