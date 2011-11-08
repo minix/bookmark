@@ -27,4 +27,10 @@ Project::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <support@example.com>},
+    :exception_recipients => %w{you@me.com}
+
 end

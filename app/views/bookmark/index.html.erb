@@ -5,13 +5,13 @@
     <title>List Bookmark</title>
     <style>
       body, h1, h2, h3, a, ol, li, ul, span, time, p{ margin:0px; padding:0px; } 
-      a{ text-decoration:none; color:#005A9c; }
+      a{ text-decoration:none; color:#FBD09D; }
       div.list_all{ position:relative; height:900px; margin:0 auto; width:960px; background:url("grid.gif") repeat-y; }
-      div.list_all .save_bm{ display:block; margin-left:10px; margin-top:10px;}
-      div.list_all .save_bm a{ padding:4px 6px; border:1px solid #005A9c; }
-      div.list_all .save_bm a:hover{ color:#FFF; background-color:#005A9C; }
+      div.list_all .save_bm{ display:block; margin-left:5px; margin-top:20px; }
+      div.list_all .save_bm a{ padding:2px 3px;  font-size:1em; }
+      div.list_all .save_bm a:hover{ color:#B65133; }
       div.list_bm, div.list_tag{ float:left; margin-top:30px; }
-      div.list_bm h2, div.list_tag h2{ color:#333; font-size:1.6em; padding-bottom:10px; border-bottom:1px double #ABBFCF;}
+      div.list_bm h2, div.list_tag h2{ color:#705E46; font-size:1.6em; padding-bottom:10px; border-bottom:1px double #ABBFCF;}
 
       div.list_bm{ margin-left:5px; width:630px; }
       div.list_bm .bm_nav{ list-style:none; margin-top:10px; }
@@ -30,7 +30,7 @@
   </head>
   <body>
     <div class="list_all">
-      <em class="save_bm"><%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %></em>
+      <span class="save_bm"><%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %></span>
         <div class="list_bm">
           <h2>Current Bookmark</h2> 
           <ol class="bm_nav">

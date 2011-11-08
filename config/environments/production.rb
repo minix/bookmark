@@ -57,4 +57,9 @@ Project::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Exception Notifier" <support@example.com>},
+    :exception_recipients => %w{you@me.com}
 end

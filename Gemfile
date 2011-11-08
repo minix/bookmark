@@ -16,6 +16,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'exception_notification_rails3', :require => 'exception_notifier'
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

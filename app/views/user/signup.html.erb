@@ -1,2 +1,21 @@
-<h1>User#signup</h1>
-<p>Find me in app/views/user/signup.html.erb</p>
+<html>
+  <head>
+    <title>SignUp</title> 
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <%= form_for :user, :url => { :controller => "user", :action => "signup" } do |f| %>
+      <label for="user_login">Username</label><br />
+      <%= f.text_field :name, :size => 20 %>
+      <br />
+      <label for="user_password">Password</label>
+      <br / >
+      <%= f.password_field :password, :size => 20 %><br />
+      <label for="user_password_confirmation">Password Confirmation</label><br / >
+      <%= f.password_field :password_confirmation, :size => 20 %><br />
+      <label for="user mail">Email</label><br />
+      <%= f.text_field :email, :size => 20 %><br />
+      <%= submit_tag "signup" %>
+    <% end %>
+  </body>
+</html>
