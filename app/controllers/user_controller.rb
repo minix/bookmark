@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-#  before_filter :login_required, :only => ['welcome', 'change_password', 'hidden']
+  before_filter :login_required, :only => ['welcome', 'change_password', 'hidden']
 
   def signup
     @user = User.new(params[:user])
@@ -16,9 +16,10 @@ class UserController < ApplicationController
 
   def login
     if request.post?
-      if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])
+      if session[:user] = User.authenticate(params[:user][:name], params[:user][:password])
         flash[:message] = "login successful"
-        redirect_to_stored
+        #redirect_to_stored
+        redirect_to :controller => "bookmark", :action => "index"
       else
         flash[:warning] = "login unsuccessful"
       end

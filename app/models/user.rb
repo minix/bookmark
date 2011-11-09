@@ -21,10 +21,11 @@ class User < ActiveRecord::Base
   end
   
 
-  def self.authenticate(login, pass)
-    u = find(:first, :conditions => ["name = ?", name])
+  def self.authenticate(login, password)
+    #u = find(:first, :conditions => ["name = ?", name])
+    u = find(:first, :conditions => { :name => "#{login}" })
     return nil if u.nil?
-    return u if User.encrypt(pass, u.salt) == u.hash_password
+    return u if User.encrypt(password, u.salt) == u.hash_password
     nil
   end
 

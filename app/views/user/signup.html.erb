@@ -16,6 +16,7 @@
       <label for="user mail">Email</label><br />
       <%= f.text_field :email, :size => 20 %><br />
       <%= submit_tag "signup" %>
+      <%= link_to "Alway Regist?Please Login", :controller => :user, :action => "login" %>
     <% end %>
   </body>
 </html>
