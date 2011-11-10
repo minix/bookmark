@@ -9,6 +9,9 @@ Project::Application.routes.draw do
 
   post "bookmark/create"
 
+  get "/signup", :controller => "user", :action => "signup"
+  get "/login", :controller => "user", :action => "login", :as => :login
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

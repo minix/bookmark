@@ -1,22 +1,46 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>SignUp</title> 
     <meta charset="utf-8" />
+    <style>
+      h1, form, label, a, br, body, input{ margin:0px; padding:0px; } 
+      body{ color:#333; font-size:normal; }
+      a{ text-decoration:none; font-size:.8em; }
+      div#main_signup { position:relative; margin:0 auto; top:100px; width:400px; padding:1px solid #E4E4E4; }
+      .signup_font{ line-height:2em; font-size:1.6em; }
+      div#main_signup form fieldset{ margin:1em 0; padding:1em; border:1px solid #ccc; background-color:#F8F8F8; }
+      div#main_signup form legend{ font-weight:bold; }
+      div#main_signup form label{ float:left; width:10em; display:block; cursor:pointer; }
+    </style>
   </head>
   <body>
-    <%= form_for :user, :url => { :controller => "user", :action => "signup" } do |f| %>
-      <label for="user_login">Username</label><br />
-      <%= f.text_field :name, :size => 20 %>
-      <br />
-      <label for="user_password">Password</label>
-      <br / >
-      <%= f.password_field :password, :size => 20 %><br />
-      <label for="user_password_confirmation">Password Confirmation</label><br / >
-      <%= f.password_field :password_confirmation, :size => 20 %><br />
-      <label for="user mail">Email</label><br />
-      <%= f.text_field :email, :size => 20 %><br />
-      <%= submit_tag "signup" %>
-      <%= link_to "Alway Regist?Please Login", :controller => :user, :action => "login" %>
-    <% end %>
+      <div id="main_signup">
+        <%= form_for :user, :url => { :controller => "user", :action => "signup" } do |f| %>
+          <fieldset>
+            <legend>Signup Me</legend>
+            <div>
+              <label for="user_login">Username</label>
+              <%= f.text_field :name, :size => 20 %>
+            </div>
+            <div>
+              <label for="user_password">Password</label>
+              <%= f.password_field :password, :size => 20 %>
+            </div>
+            <div>
+              <label for="user_password_confirmation">Confirmation</label>
+              <%= f.password_field :password_confirmation, :size => 20 %>
+            </div>
+            <div>
+              <label for="user mail">Email</label>
+              <%= f.text_field :email, :size => 20 %><br />
+            </div>
+            <div>
+              <%= submit_tag "signup" %>
+              <%= link_to "Login", :controller => :user, :action => "login" %>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
   </body>
 </html>
