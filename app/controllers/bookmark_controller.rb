@@ -1,6 +1,7 @@
 class BookmarkController < ApplicationController
   def index
     @bookmark = Bookmark.find(:all)
+    @user = User.find_by_id(session[:user])
     #@tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
     #@tag = Bookmark.find(:all, :select => "tag", :group => "tag", :order => "count(tag) DESC")
     @tag = Bookmark.find(:all, :select => "tag", :group => "tag")
@@ -43,6 +44,9 @@ class BookmarkController < ApplicationController
 
   def modify
     @bookmark = Bookmark.find(params[:id])
+  end
+
+  def profile
   end
 
 end
