@@ -18,7 +18,7 @@
       .logout a:hover{ text-decoration:underline; }
       .profile{ }
       div.list_all{ position:relative; height:900px; margin:0 auto; width:960px;  }
-      div.list_all .save_bm{ position:absloute; margin-left:475px; }
+      div.list_all .save_bm{ margin-left:475px; }
       div.list_all .save_bm a{ padding:5px 10px; font-size:1em; text-decoration:none; color:#FFF; background-color:#7AA516; border-radius:2px; -moz-border-radius:2px; -webkit-border-radius:2px;  }
       div.list_bm, div.list_tag{ float:left; margin-top:30px; }
       div.list_bm h2, div.list_tag h2{ color:#800; font-size:1.6em; padding-bottom:10px; border-bottom:1px double #ABBFCF;}
@@ -26,10 +26,11 @@
       div.list_bm{ margin-left:5px; width:630px; }
       div.list_bm .bm_nav{ list-style:none; margin-top:10px; }
       div.list_bm .bm_nav li{ display:block; padding:10px 0; border-top:1px solid #E3E3E3; border-bottom:1px solid #E3E3E3; }
+      div.list_bm .bm_nav li a{ display:block; margin-bottom:10px; text-decoration:none; color:#36C; }
+      div.list_bm .bm_nav li a:hover{ color:#333; }
       div.list_bm .bm_nav li:first-child{ border:0; }
       div.list_bm .bm_nav li .tag{ padding:2px 3px; font-size:.7em; margin-top:10px; background-color:#996E39; color:#FFF; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; -o-border-radius:2px; }
       div.list_bm .bm_nav li .time{ font-size:.7em; color:#666; }
-      div.list_bm .bm_nav li a{ display:block; margin-bottom:10px; }
       div.list_bm .bm_nav li .ch{ float:right;}
       div.list_bm .bm_nav li .ch a{ font-size:.7em; padding:3px 4px; color:#ABBFCF; }
       div.list_bm .bm_nav li .ch a:hover{ color:#005A9C; padding:3px 4px; }
@@ -42,12 +43,12 @@
     <div class="list_all">
       <div class="user_info">
           <%= link_to "Logo", :controller => "Bookmark", :action => "index" %>
-          <span class="save_bm"><%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %></span>
           <ul class="s_l">
             <% if @user == nil %>
               <li class="login"><%= link_to "Login", :controller => "user", :action => "login" %></li>
               <li class="signup"><%= link_to "Join", :controller => "user", :action => "signup", :class => "signup" %></li>
             <% else %>
+              <span class="save_bm"><%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %></span>
               <li class="user"><%= @user.name %><br /><span class="logout"><%= link_to 'Logout', :controller => "user", :action => "logout"  %></span></li> 
               <li><%= link_to 'Profile', :controller => "bookmark", :action => "user" %></li>
             <% end %>
@@ -62,6 +63,7 @@
                   <a href="<%= bookmark.url %>"><%= bookmark.state %></a>
                 </h3>
                 <span class="tag"><%= bookmark.tag %></span> <time class="time"><%= bookmark.created_at.strftime('%Y-%m-%d') %></time>
+                <span class="tag"><%= @username %>
                 <span class="ch"><%= link_to "Delete", :action => "destroy", :id => bookmark, :confirm => "Are you Sure", :method => :delete %></span>
                 <span class="ch"><%= link_to "Edit", :action => "modify", :id => bookmark %></span>
               </li>

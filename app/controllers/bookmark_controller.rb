@@ -1,14 +1,14 @@
 class BookmarkController < ApplicationController
   def index
     @bookmark = Bookmark.find(:all)
+    @list_name = Bookmark.find(:all, :select => "bm_user_id")
     @user = User.find_by_id(session[:user])
     #@tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
     #@tag = Bookmark.find(:all, :select => "tag", :group => "tag", :order => "count(tag) DESC")
     @tag = Bookmark.find(:all, :select => "tag", :group => "tag")
-    #@tag_count = Bookmark.where(:tag => "#{@tag.tag}").count
-#    @tag.each do |tag_count|
-#      @tag_count = Bookmark.where(:tag => "#{tag_count.tag}").count
-#    end
+    @list_name.each do |username|
+      @username = User.find_by_id("username")
+    end
   end
 
   def new
@@ -22,7 +22,9 @@ class BookmarkController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(params[:bookmark])
-    
+    @user = User.find_by_id(session[:user])
+    @bookmark.bm_user_id = @user.id
+
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to :action => "index", :notice => 'Bookmark Save! ' }
