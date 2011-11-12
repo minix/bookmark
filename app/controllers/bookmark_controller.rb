@@ -49,4 +49,16 @@ class BookmarkController < ApplicationController
   def profile
   end
 
+  def login
+    if request.post?
+      if session[:user] = User.authenticate(params[:user][:name], params[:user][:password])
+        flash[:message] = "login successful"
+        #redirect_to_stored
+        redirect_to :controller => "bookmark", :action => "index"
+      else
+        flash[:warning] = "login unsuccessful"
+      end
+    end
+  end
+
 end
