@@ -7,7 +7,7 @@
       h1, form, label, a, br, body, fieldset, input{ margin:0px; padding:0px; } 
       body{ color:#333; font-size:normal; }
       a{ text-decoration:none; font-size:.8em; }
-      div#main_signup { position:relative; margin:0 auto; top:100px; width:500px; }
+      div#main_signup { position:relative; margin:0 auto; top:100px; width:500px; padding:1px solid #E4E4E4; }
       div#main_signup fieldset{ border:none; }
       div#main_signup .info{ font-size:2em; color:#3E3E3E; border-bottom:2px solid #3E3E3E; margin-bottom:12px; padding-bottom:10px; }
       .glob{ margin:1px 0px 8px 1px; }

@@ -31,9 +31,6 @@
       div.list_bm .bm_nav li:first-child{ border:0; }
       div.list_bm .bm_nav li .tag{ padding:2px 3px; font-size:.7em; margin-top:10px; background-color:#996E39; color:#FFF; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; -o-border-radius:2px; }
       div.list_bm .bm_nav li .time{ font-size:.7em; color:#666; }
-      div.list_bm .bm_nav li .ch{ float:right;}
-      div.list_bm .bm_nav li .ch a{ font-size:.7em; padding:3px 4px; color:#ABBFCF; }
-      div.list_bm .bm_nav li .ch a:hover{ color:#005A9C; padding:3px 4px; }
 
       div.list_tag{ margin-left:10px;  width:300px; }
       div.list_tag .nav_tag{ list-style:none; margin-top:20px; }
@@ -50,7 +47,7 @@
             <% else %>
               <span class="save_bm"><%= link_to "Save Bookmark", :controller => "bookmark", :action => "new" %></span>
               <li class="user"><%= @user.name %><br /><span class="logout"><%= link_to 'Logout', :controller => "user", :action => "logout"  %></span></li> 
-              <li><%= link_to 'Profile', :controller => "bookmark", :action => "user" %></li>
+              <li><%= link_to 'Profile', :controller => "bookmark", :action => "profile" %></li>
             <% end %>
         </ul>
       </div>
@@ -64,8 +61,6 @@
                 </h3>
                 <span class="tag"><%= bookmark.tag %></span> <time class="time"><%= bookmark.created_at.strftime('%Y-%m-%d') %></time>
                 <span class="tag"><%= @username %>
-                <span class="ch"><%= link_to "Delete", :action => "destroy", :id => bookmark, :confirm => "Are you Sure", :method => :delete %></span>
-                <span class="ch"><%= link_to "Edit", :action => "modify", :id => bookmark %></span>
               </li>
             <% end %>
           </ol>
