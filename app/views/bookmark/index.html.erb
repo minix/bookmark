@@ -55,13 +55,15 @@
           <h2>Current Bookmark</h2> 
           <ol class="bm_nav">
             <% @bookmark.each do |bookmark| %>
+                <% @username.each do |username| %>
               <li>
                 <h3>
                   <a href="<%= bookmark.url %>"><%= bookmark.state %></a>
                 </h3>
                 <span class="tag"><%= bookmark.tag %></span> <time class="time"><%= bookmark.created_at.strftime('%Y-%m-%d') %></time>
-                <span class="tag"><%= @username %>
+                  <span class="tag"><%= username.name %>
               </li>
+                <% end %>
             <% end %>
           </ol>
       </div>

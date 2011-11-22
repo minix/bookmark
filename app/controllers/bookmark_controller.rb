@@ -1,13 +1,15 @@
 class BookmarkController < ApplicationController
   def index
     @bookmark = Bookmark.find(:all)
-    @list_name = Bookmark.find(:all, :select => "bm_user_id")
-    @user = User.find_by_id(session[:user])
-    #@tag = Bookmark.find_by_sql("select tag from bookmarks group by tag order by count(tag) DESC")
-    #@tag = Bookmark.find(:all, :select => "tag", :group => "tag", :order => "count(tag) DESC")
-    @tag = Bookmark.find(:all, :select => "tag", :group => "tag")
-    @list_name.each do |username|
-      @username = User.find_by_id("username")
+    if session[:user]
+      @user = User.find_by_id(session[:user])
+    end
+    #@tag = Bookmark.find(:all, :select => "tag", :group => "tag")
+    @tag = Bookmark.select("tag").group("tag")
+    @list_name = Bookmark.select("bm_user_id")
+    @list_name.each do |list_name|
+      list = list_name.bm_user_id
+      @username = User.where("id = '#{list}'")
     end
   end
 
