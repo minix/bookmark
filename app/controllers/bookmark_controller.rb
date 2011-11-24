@@ -4,13 +4,7 @@ class BookmarkController < ApplicationController
     if session[:user]
       @user = User.find_by_id(session[:user])
     end
-    #@tag = Bookmark.find(:all, :select => "tag", :group => "tag")
     @tag = Bookmark.select("tag").group("tag")
-    @list_name = Bookmark.select("bm_user_id")
-    @list_name.each do |list_name|
-      list = list_name.bm_user_id
-      @username = User.where("id = '#{list}'")
-    end
   end
 
   def new
@@ -25,7 +19,7 @@ class BookmarkController < ApplicationController
   def create
     @bookmark = Bookmark.new(params[:bookmark])
     @user = User.find_by_id(session[:user])
-    @bookmark.bm_user_id = @user.id
+    @bookmark.bm_user_name = @user.name
 #    if :url !~ /^[http:\/\/|https:\/\/].*/
 #      :url => 'http://' + :url
 #    end
@@ -67,14 +61,7 @@ class BookmarkController < ApplicationController
 
   def profile
     @user = User.find_by_id(session[:user])
-    @url = Bookmark.where(:bm_user_id => "#{@user.id}")
-    @bookmark = Bookmark.find(:all)
-    @list_name = Bookmark.find(:all, :select => "bm_user_id")
-    @user = User.find_by_id(session[:user])
-    @tag = Bookmark.find(:all, :select => "tag", :group => "tag")
-    @list_name.each do |username|
-      @username = User.find_by_id("username")
-    end
+    @url = Bookmark.where("bm_user_name = '#{@user.name}'")
   end
 
 end

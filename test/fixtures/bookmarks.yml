@@ -4,12 +4,14 @@ one:
   url: MyString
   tag: MyString
   state: MyString
-  bm_user_id: 1
-  bm_share: false
+  bm_user_name: MyString
+  description: MyText
+  saved: false
 
 two:
   url: MyString
   tag: MyString
   state: MyString
-  bm_user_id: 1
-  bm_share: false
+  bm_user_name: MyString
+  description: MyText
+  saved: false
